@@ -699,7 +699,8 @@
         whatsapp: whatsapp,
         fileName: file.name,
         fileSize: file.size,
-        mimeType: file.type || "video/mp4"
+        mimeType: file.type || "video/mp4",
+        origin: window.location.origin
       };
 
       const res = await fetch(APPS_SCRIPT_URL, {
