@@ -699,8 +699,7 @@
         whatsapp: whatsapp,
         fileName: file.name,
         fileSize: file.size,
-        mimeType: file.type || "video/mp4",
-        origin: window.location.origin
+        mimeType: file.type || "video/mp4"
       };
 
       const res = await fetch(APPS_SCRIPT_URL, {
@@ -739,8 +738,7 @@
       activeXhr = xhr;
 
       xhr.open("PUT", uploadUrl, true);
-      // Do NOT set a custom Content-Type header here—Google Drive already bound
-      // X-Upload-Content-Type during initUpload, and omitting it prevents CORS preflight blocks.
+      xhr.setRequestHeader("Content-Type", file.type || "video/mp4");
 
       xhr.upload.onprogress = (e) => {
         if (e.lengthComputable) {
